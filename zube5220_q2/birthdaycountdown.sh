@@ -5,9 +5,12 @@ user=$(whoami)
 echo "Hello $user :)"
 
 # getting birthday
-echo "Please enter your date of birth DDMM"
+echo "Please enter your date of birth DDMM (q to exit): "
 read daymonth
 
+#loop to reask for input until q is inputted to stop.
+while [ "$daymonth" != "q" ]
+do
 # extracting day +1 because wont count that day when subtracted
 day=$(expr 1 + $daymonth / 100 )
 # echo "day $day"
@@ -108,3 +111,9 @@ findHoliday() {
 }
 findHoliday $daymonth
 findHoliday $offset_days
+
+echo "Please enter your date of birth DDMM (q to exit): "
+read daymonth
+
+done
+exit 0
