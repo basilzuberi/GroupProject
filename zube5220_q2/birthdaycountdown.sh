@@ -39,7 +39,7 @@ echo "Days left to your birthday: $daysleft"
 
 # feature 1
 holidays=("Happy Halloween" "Merry Christmas" "Happy St. Patrick's" "Happy Canada Day")
-holidates=( 1031 1225 0317 0701 )
+holidates=( 3110 2512 1703 0107 )
 
 # currentDate=1225
 counter=0
@@ -75,3 +75,36 @@ then
     offset_days=$(date -d "$1 days" +%d%m)
     echo $offset_days
 fi
+
+#feature 3
+
+findHoliday() {
+    for i in "${holidates[@]}"
+    do
+
+        # checks to see if user birthday is on a holiday
+        if [[ $i -eq $1 ]]
+        then
+            case "$1" in
+                "3110")
+                    echo "HAPPY HALLOWEEN!"
+                    ;;
+                "2512")
+                    echo "MERRY CHRISTMAS!"
+                    ;;
+                "1703")
+                    echo "HAPPY ST. PATRICK'S DAY!"
+                    ;;
+                    "0107")
+                    echo "HAPPY CANADA DAY!"
+                    ;;
+                "*")
+                    echo ""
+                    ;;
+            esac
+            exit 0
+        fi
+    done
+}
+findHoliday $daymonth
+findHoliday $offset_days
