@@ -62,3 +62,16 @@ done
 # feature 2
 
 offset=$1
+
+# days_offset=$( expr $offset '*' 86400 )
+
+# offset_days=$( expr $days_offset + $EPOCHSECONDS )
+
+# echo $offset_days
+# check if number >0 && number <=15
+if [[ $offset -le 15 && $offset_days -gt 0 ]]
+then
+    # prints offset DDMM
+    offset_days=$(date -d "$1 days" +%d%m)
+    echo $offset_days
+fi
