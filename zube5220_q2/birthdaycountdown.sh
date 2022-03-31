@@ -6,18 +6,21 @@ echo "Hello $user :)"
 
 # getting birthday
 echo "Please enter your date of birth DDMM (q to exit): "
-read daymonth
+read bdate
 
 #loop to reask for input until q is inputted to stop.
-while [ "$daymonth" != "q" ]
+while [ "$bdate" != "q" ]
 do
-    # extracting day +1 because wont count that day when subtracted
-    day=$(expr 1 + $daymonth / 100 )
-    # echo "day $day"
+    # extracting day and month from user input   
+    month=${bdate:2:4}
+    day=${bdate:0:2}
+    # converting day/month to int
+    month=$(expr $month + 0 )
+    day=$(expr $day + 0 )
 
     # getting current month and subtracting with the users birthday month to get the months left
     currMonth=$(date +%m)
-    month=$(expr $daymonth % 100 )
+    # month=$(expr $daymonth % 100 )
     # -1 because it counts the current month as 1 when it should be 0
     month=$(expr $month - $currMonth - 1)
     # echo "month $month"
@@ -37,10 +40,16 @@ do
 
     # convert seconds to days
     daysleft=$( expr $secsleft '/' 86400 )
-
-    echo "Days left to your birthday: $daysleft"
-
-    # feature 1
+    
+     # feature 1
+    #  if 0 days left print birthday message else display countdown
+    if [ $daysleft -eq 0 ]
+    then
+        echo "Happy Birthday!"
+    else
+        echo "Days left to your birthday: $daysleft"
+    fi
+   
     holidays=("Happy Halloween" "Merry Christmas" "Happy St. Patrick's" "Happy Canada Day")
     holidates=( 3110 2512 1703 0107 )
 
@@ -62,15 +71,9 @@ do
         
     done
 
+
     # feature 2
-
     offset=$1
-
-    # days_offset=$( expr $offset '*' 86400 )
-
-    # offset_days=$( expr $days_offset + $EPOCHSECONDS )
-
-    # echo $offset_days
     # check if number >0 && number <=15
     if [[ $offset -le 15 && $offset_days -gt 0 ]]
     then
@@ -80,7 +83,6 @@ do
     fi
 
     #feature 3
-
     findHoliday() {
         for i in "${holidates[@]}"
         do
@@ -109,11 +111,11 @@ do
             fi
         done
     }
-    findHoliday $daymonth
+    findHoliday $bdate
     findHoliday $offset_days
 
     echo "Please enter your date of birth DDMM (q to exit): "
-    read daymonth
+    read bdate
 
 done
 exit 0
