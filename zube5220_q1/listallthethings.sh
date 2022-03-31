@@ -27,8 +27,8 @@ printFileLongList(){
         find_file=$(echo ${path} | grep -E "(^($1)$)|((\/$1)$)" )
         if [ "$find_file" != "" ]
         then
-            response=$(ls -l "${path}")
-            echo $response
+            iNodeResponse=$(ls -i "${path}")
+            echo $iNodeResponse
             found=1
         fi
         i=$(( $i + 1 ))
