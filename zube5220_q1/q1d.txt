@@ -1,0 +1,12 @@
+For the branching and merging, I had tried to do it multiple times as I was thinking probably should've been a merge conflict
+When I branched, I switched the "-l" flag to be "-i" and committed the changes, then merged back to the main branch.
+After I switched back to the main branch, I did a "git merge" with the branch with iNode in it (called ls-change)
+This added the changes without any issues back to the main branch. I had to manually add in both parts for the ls -l and ls -i
+
+I tried it a few times with deleting the entire line in the branch and adding a completely seperate line but there were no conflicts
+
+I believe that Git may have handled the merge conflict on it's own.
+Or maybe there wasn't a large enough difference between the changes for git to consider this as an issue.
+
+If we added both features in one commit I guess that does reduce the number of commits I had to do.
+Mostly because I spent about 20 minutes trying to figure out why it WORKED rather than it not working. Quite interesting.
