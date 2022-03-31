@@ -27,7 +27,7 @@ printFileLongList(){
         find_file=$(echo ${path} | grep -E "(^($1)$)|((\/$1)$)" )
         if [ "$find_file" != "" ]
         then
-            response=$(ls -i "${path}")
+            response=$(ls -l "${path}")
             echo $response
             found=1
         fi
