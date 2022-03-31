@@ -5,26 +5,30 @@ user=$(whoami)
 echo "Hello $user :)"
 
 # getting birthday
-echo "Please enter your date of birth DDMM (q to exit): "
+echo "Please enter your date of birth DDMMYYYY (q to exit): "
 read bdate
 
 #loop to reask for input until q is inputted to stop.
 while [ "$bdate" != "q" ]
 do
     # extracting day and month from user input   
-    month=${bdate:2:4}
+    month=${bdate:2:2}
     day=${bdate:0:2}
+    # Feature 5: Getting year from input
+    year=${bdate:4:4}
     # converting day/month to int
     month=$(expr $month + 0 )
     day=$(expr $day + 0 )
-
+    year=$(expr $year + 0 )
     # getting current month and subtracting with the users birthday month to get the months left
     currMonth=$(date +%m)
+    currYear=$(date +%Y)
+    currDay=$(date +%d)
     # month=$(expr $daymonth % 100 )
     # -1 because it counts the current month as 1 when it should be 0
     month=$(expr $month - $currMonth - 1)
-    # echo "month $month"
-
+    # Calculate age
+    ageYear=$(expr $currYear - $year )
     # converting months and days to seconds
     monthseconds=$( expr $month '*' 2629746 )
     dayseconds=$( expr $day '*' 86400 )
@@ -46,6 +50,7 @@ do
     if [ $daysleft -eq 0 ]
     then
         echo "Happy Birthday!"
+        echo "You are now $ageYear years old! :)"
     else
         echo "Days left to your birthday: $daysleft"
     fi
@@ -114,7 +119,7 @@ do
     findHoliday $bdate
     findHoliday $offset_days
 
-    echo "Please enter your date of birth DDMM (q to exit): "
+    echo "Please enter your date of birth DDMMYYYY (q to exit): "
     read bdate
 
 done
