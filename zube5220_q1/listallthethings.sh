@@ -1,10 +1,10 @@
 files=($@)
 file_paths=()
 
+#getting all the files in the directory and subdirectories as their absolute paths
 getAllFilesPaths() {
     for item in $1/*
     do
-        # echo "TEST $item" 
         if [[ -d $item ]]           # If directory
         then
             getAllFilesPaths $item
@@ -14,7 +14,7 @@ getAllFilesPaths() {
         fi
     done
 }
-
+#iterating through all the absolute paths of files only and printing the long list for the path that has the filename appended to it i.e. /{filename}
 printFileLongList(){
     found=0
     i=0
@@ -38,6 +38,8 @@ printFileLongList(){
 }
 
 getAllFilesPaths $PWD
+
+#going through the file provided by the user
 for file in ${files[@]}
 do
     echo "ls -l for filename: $file"
