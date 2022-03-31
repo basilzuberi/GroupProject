@@ -28,7 +28,7 @@ printFileLongList(){
         if [ "$find_file" != "" ]
         then
             # Add response
-            response=$(ls -l "${path}")
+            response=$(ls -i "${path}")
             echo $response
             found=1
         fi
