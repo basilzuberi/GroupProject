@@ -1,0 +1,24 @@
+* 4b969f8 (HEAD -> master, origin/master) Merge both branches for iNode and long list
+* 546a0ad (ls-change) Change long list to inode
+* 98906fa Change back to long list format
+* 2282964 Remove Comment
+* e040f09 Change the long list format to inode format
+* 924f6ac add comment
+* 615d80c Change the back to long list format
+* bd8b552 Change the long list format to inode format
+*   381239a Merge branch 'abdul'
+|\  
+| * 84fa97c (origin/abdul) using relative path, accounting for multiple matches
+* | 083b7e8 using relative path, accounting for multiple matches
+* | a3f0fa0 Merge branch 'abdul'
+|\| 
+| * f4cd9f8 Implemenatation for Q1 without b or c
+| * ad56fbc Final Implemenatation for Q1 without b or c
+* | 1ceae88 Implementation for Q1 without b or c
+* | 16bdede Update birthdaycountdown.sh
+|/  
+* e00b56e Update birthdaycountdown.sh
+* 5ea1a63 Q1 Initial commit
+* 098ee4d feature 2 added
+* 36a8111 added 2a and feature 1
+* 76f8779 Add initial directories
