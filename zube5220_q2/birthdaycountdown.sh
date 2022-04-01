@@ -89,13 +89,15 @@ do
 
     #feature 3
     findHoliday() {
+        entry=$1
+        birthday=${entry:0:4}
         for i in "${holidates[@]}"
         do
 
             # checks to see if user birthday is on a holiday
-            if [[ $i -eq $1 ]]
+            if [[ $i -eq $birthday ]]
             then
-                case "$1" in
+                case "$birthday" in
                     "3110")
                         echo "HAPPY HALLOWEEN!"
                         ;;
@@ -112,7 +114,6 @@ do
                         echo ""
                         ;;
                 esac
-                exit 0
             fi
         done
     }
